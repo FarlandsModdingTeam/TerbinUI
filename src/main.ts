@@ -1,18 +1,17 @@
 import { app, BrowserWindow } from "electron";
-
-/*
-- Arrancar con: npm run dev
-*/
+//import { cargarHome } from './templates/home';
 
 let mainWindow: BrowserWindow | null = null;
 
-function createWindow() {
+function createWindow()
+{
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
   });
 
   mainWindow.loadFile("index.html");
+  console.log("cargarHome()");
 }
 
 app.whenReady().then(createWindow);

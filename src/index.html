@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -17,27 +17,36 @@
   </head>
 
   <body>
-    <grid class="container">
-      
-      <div class="row" style="height: 100%;">
-        <div class="col">
+    <div class="container-fluid">
+      <div class="row">
 
+        <div class="col-md-9">
           <div class="align-items-left p-3 mb-2 bg-primary text-white">
-            <p>LOREM IPSUM DOLOR SIT AMET</p>
+            <p id="nombre-componente">nombre-componente</p>
+          </div>
+
+          <div id="main-content">
+            <!-- Aquí se renderizarán las diferentes páginas -->
           </div>
 
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col text-center">
-          <h1 class="text-center">Esto es el principal ppal</h1>
-          <button type="button" class="btn btn-primary">Primary</button>
+        <div class="col-md-3">
+          <div class="bg-secondary p-3 h-100">
+            <h5 class="text-white mb-3">TerbinUI</h5>
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-outline-light" route="inicio">Inicio</button>
+              <button type="button" class="btn btn-outline-light" route="instancias">Instancias</button>
+              <button type="button" class="btn btn-outline-light" route="mods">Mods</button>
+              <button type="button" class="btn btn-outline-light" route="configuracion">Configuración</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-    </grid>
+      </div>
+    </div>
   </body>
 
-
+  <script type="module" src="index.js"></script>
+  <script type="module" src="" id="scriptVista"></script>
 </html>
