@@ -1,0 +1,25 @@
+{
+  "name": "TerbinUI",
+  "version": "0.0.0",
+  "description": "si",
+  "main": "index.js",
+  "scripts": {
+    "test": "prueba"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarlandsModdingTeam/TerbinUI.git"
+  },
+  "keywords": [
+    "spanish"
+  ],
+  "author": "Sui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FarlandsModdingTeam/TerbinUI/issues"
+  },
+  "homepage": "https://github.com/FarlandsModdingTeam/TerbinUI#readme",
+  "devDependencies": {
+    "electron": "^38.1.0"
+  }
+}
