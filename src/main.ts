@@ -1,5 +1,4 @@
 import { app, BrowserWindow } from "electron";
-//import { cargarHome } from './templates/home';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -11,7 +10,7 @@ function createWindow()
   });
 
   mainWindow.loadFile("index.html");
-  console.log("cargarHome()");
+  console.log("Cargando TerbinUI...");
 }
 
 app.whenReady().then(createWindow);
