@@ -1,5 +1,9 @@
 const { app, BrowserWindow } = require('electron')
 
+/*
+- Arrancar con: npm run start
+*/
+
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
