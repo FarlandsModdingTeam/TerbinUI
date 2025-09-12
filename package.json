@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "description": "si",
   "main": "main.js",
-  "scripts": {
-    "start": "electron ./src/main.js",
-    "dev": "ts-node ./src/main.ts",
+  "scripts":
+  {
+    "start": "electron ./src/main.ts",
     "test": "prueba"
   },
   "repository": {
