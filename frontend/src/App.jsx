@@ -1,35 +1,87 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+
+import Home from './templates/Home.jsx'
+import Configuracion from './templates/Configuracion.jsx'
+import Instancias from "./templates/Instancias.jsx"
+import Mods from "./templates/Mods.jsx"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState('Home');
+  
+  // Función para obtener el componente correcto
+  const devolverPagina = (nombrePagina) => {
+    switch(nombrePagina) {
+      case 'Home':
+        return <Home />;
+      case 'Instancias':
+        return <Instancias />;
+      case 'Mods':
+        return <Mods />;
+      case 'Configuracion':
+        return <Configuracion />;
+      default:
+        return <Home />;
+    }
+  };
+
+  const cargarPagina = (pagina) => {
+    console.log(`Cargando página: ${pagina}`);
+    setCurrentPage(pagina);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-9">
+          <div className="align-items-left p-3 mb-2 bg-primary text-white">
+            <h1 id="nombre-componente">{currentPage}</h1>
+          </div>
+
+          <div id="main-content">
+            {devolverPagina(currentPage)}
+          </div>
+        </div>
+
+        <div className="col-md-3">
+          <div className="bg-secondary p-3 h-100">
+            <h5 className="text-white mb-3">TerbinUI</h5>
+            <div className="d-grid gap-2">
+              <button 
+                type="button" 
+                className="btn btn-outline-light" 
+                onClick={() => cargarPagina('Home')}
+              >
+                Inicio
+              </button>
+              <button 
+                type="button" 
+                className="btn btn-outline-light" 
+                onClick={() => cargarPagina('Instancias')}
+              >
+                Instancias
+              </button>
+              <button 
+                type="button" 
+                className="btn btn-outline-light" 
+                onClick={() => cargarPagina('Mods')}
+              >
+                Mods
+              </button>
+              <button 
+                type="button" 
+                className="btn btn-outline-light" 
+                onClick={() => cargarPagina('Configuracion')}
+              >
+                Configuración
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

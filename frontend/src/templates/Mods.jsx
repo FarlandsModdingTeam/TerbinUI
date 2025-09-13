@@ -1,0 +1,20 @@
+export default function Mods()
+{
+    return (
+    <>
+        <div class="fbody">
+            <h2>Gestión de Mods</h2>
+            <p>Aquí puedes gestionar los mods instalados en tu instancia de TerbinUI.</p>
+
+            <div class="mb-3">
+                <label for="modUpload" class="form-label">Subir nuevo mod:</label>
+                <input class="form-control" type="file" id="modUpload" />
+            </div>
+
+            <h3>Mods Instalados</h3>
+            <ul id="modList" class="list-group">
+                {/* Aquí se listarán los mods instalados */}
+            </ul>
+        </div>
+    </>);
+}

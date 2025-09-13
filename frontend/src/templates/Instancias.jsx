@@ -1,0 +1,10 @@
+export default function Instancias()
+{
+    return (
+    <>
+        <div class="fbody">
+            <h2>Gestión de Instancias</h2>
+            <p>Aquí puedes gestionar tus instancias de TerbinUI.</p>
+        </div>
+    </>);
+}
