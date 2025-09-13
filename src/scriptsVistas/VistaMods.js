@@ -12,7 +12,6 @@ export class VistaMods extends IVistaScript
 */
 document.addEventListener('click', (event) =>
 {
-    console.log(`AAAAAAAAAAAAAAAAAAAAAAAAAA`);
     if (event.target.matches('button[di]'))
     {
         const route = event.target.getAttribute('di');
