@@ -18,7 +18,7 @@ function createWindow()
             setTimeout(() =>
             {
                 win.loadURL(url);
-            }, 13000);
+            }, 3000);
         });
     }
     else
