@@ -1,17 +1,20 @@
+import Encabezado from "../componentes/Encabezado.jsx";
+import T from "../componentes/T.jsx";
+
 export default function Mods()
 {
     return (
     <>
+        <Encabezado k="8" />
         <div class="fbody">
-            <h2>Gestión de Mods</h2>
-            <p>Aquí puedes gestionar los mods instalados en tu instancia de TerbinUI.</p>
+            <p><T k="12">Aquí puedes gestionar los mods instalados en tu instancia de TerbinUI.</T></p>
 
             <div class="mb-3">
-                <label for="modUpload" class="form-label">Subir nuevo mod:</label>
+                <label for="modUpload" class="form-label"><T k="13">Install new mod:</T></label>
                 <input class="form-control" type="file" id="modUpload" />
             </div>
 
-            <h3>Mods Instalados</h3>
+            <h3><T k="14">Installed Mods</T></h3>
             <ul id="modList" class="list-group">
                 {/* Aquí se listarán los mods instalados */}
             </ul>

@@ -7,6 +7,8 @@ import Configuracion from './templates/Configuracion.jsx'
 import Instancias from "./templates/Instancias.jsx"
 import Mods from "./templates/Mods.jsx"
 
+import T from './componentes/T.jsx'
+
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
   
@@ -35,9 +37,6 @@ function App() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-9">
-          <div className="align-items-left p-3 mb-2 bg-primary text-white">
-            <h1 id="nombre-componente">{currentPage}</h1>
-          </div>
 
           <div id="main-content">
             {devolverPagina(currentPage)}
@@ -53,28 +52,28 @@ function App() {
                 className="btn btn-outline-light" 
                 onClick={() => cargarPagina('Home')}
               >
-                Inicio
+                <T k="1">Home</T>
               </button>
               <button 
                 type="button" 
                 className="btn btn-outline-light" 
                 onClick={() => cargarPagina('Instancias')}
               >
-                Instancias
+                <T k="2">Instances</T>
               </button>
               <button 
                 type="button" 
                 className="btn btn-outline-light" 
                 onClick={() => cargarPagina('Mods')}
               >
-                Mods
+                <T k="3">Mods</T>
               </button>
               <button 
                 type="button" 
                 className="btn btn-outline-light" 
                 onClick={() => cargarPagina('Configuracion')}
               >
-                Configuración
+                <T k="9">Configuration</T>
               </button>
             </div>
           </div>

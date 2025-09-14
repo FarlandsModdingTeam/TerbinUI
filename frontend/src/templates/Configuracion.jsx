@@ -1,10 +1,13 @@
+import Encabezado from "../componentes/Encabezado.jsx";
+import T from '../componentes/T.jsx';
+
 export default function Configuracion()
 {
     return (
     <>
+        <Encabezado k="9" />
         <div class="fbody">
-            <h2>Gestión de Instancias</h2>
-            <p>Aquí puedes gestionar tus instancias de TerbinUI.</p>
+            <p><T k="15">Config for TerbinUI.</T></p>
         </div>
     </>);
 }
