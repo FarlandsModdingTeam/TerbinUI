@@ -1,13 +1,27 @@
 import fs from 'fs';
+import * as config from "./ManagerConfig.js";
 
 // TODO: cambiar el idioma.
 // TODO: Actualizar todos los T.
 
 var idiomaCargado = "Ninguno";
 
+function setIdioma(eNovoIdioma)
+{
+    idiomaCargado = eNovoIdioma;
+    config.Idioma(eNovoIdioma);
+    // TODO: recargar los T.
+}
+
 function handleLenguage()
 {
     // TODO: comprobar el idioma cargado.
+}
+
+export function getCurrentLenguage()
+{
+    handleLenguage();
+    return idiomaCargado;
 }
 
 export function getLenguages()
