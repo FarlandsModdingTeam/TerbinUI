@@ -7,7 +7,7 @@ export default function Mods()
     <>
         <Encabezado k="8" />
         <div class="fbody">
-            <p><T k="12">Aquí puedes gestionar los mods instalados en tu instancia de TerbinUI.</T></p>
+            <p><T k="12">Here you can manage the mods installed in your TerbinUI instance.</T></p>
 
             <div class="mb-3">
                 <label for="modUpload" class="form-label"><T k="13">Install new mod:</T></label>

@@ -1,6 +1,32 @@
+import fs from 'fs';
+
 // TODO: cambiar el idioma.
 // TODO: Actualizar todos los T.
 
+var idiomaCargado = "Ninguno";
+
+function handleLenguage()
+{
+    // TODO: comprobar el idioma cargado.
+}
+
+export function getLenguages()
+{
+    try
+    {
+        const jsonFiles = fs.readFileSync("./lenguages")
+                        .filter(f => f.endsWith('.json'))
+                        .map(f => f.replace('.json', ''));
+
+        console.log('Idiomas disponibles:', jsonFiles);
+        return jsonFiles;
+    }
+    catch (error)
+    {
+        console.error("Error al obtener los lenguajes:", error);
+        return ["Error", "404"];
+    }
+}
 
 export function cargarTexto(codigo, idioma)
 {
