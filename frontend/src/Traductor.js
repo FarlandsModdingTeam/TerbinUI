@@ -1,34 +1,56 @@
 import fs from 'fs';
 import * as config from "./ManagerConfig.js";
+import { eventManager } from "./EventManager.js";
+ 
 
-// TODO: cambiar el idioma.
-// TODO: Actualizar todos los T.
-
-var idiomaCargado = "Ninguno";
+var idiomaCargado = null;
 
 function setIdioma(eNovoIdioma)
 {
     idiomaCargado = eNovoIdioma;
     config.Idioma(eNovoIdioma);
-    // TODO: recargar los T.
+    eventManager.emit('languageChanged', eNovoIdioma);
 }
 
-function handleLenguage()
+function handleLanguage()
 {
-    // TODO: comprobar el idioma cargado.
+    if (idiomaCargado === null)
+    {
+        const lang = config.Idioma(null);
+
+        if (lang !== -1) idiomaCargado = lang;
+        else idiomaCargado = "English";
+
+        setIdioma(idiomaCargado);
+    }
+    else
+    {
+        const lang = config.Idioma(null);
+        if (lang !== idiomaCargado)
+        {
+            config.Idioma(idiomaCargado);
+        }
+    }
 }
 
-export function getCurrentLenguage()
+export function ChangeLanguage(eLanguage)
 {
-    handleLenguage();
+    handleLanguage();
+    if (eLanguage === idiomaCargado) return;
+    setIdioma(eLanguage);
+}
+
+export function GetCurrentLanguage()
+{
+    handleLanguage();
     return idiomaCargado;
 }
 
-export function getLenguages()
+export function getLanguages()
 {
     try
     {
-        const jsonFiles = fs.readFileSync("./lenguages")
+        const jsonFiles = fs.readFileSync("./languages")
                         .filter(f => f.endsWith('.json'))
                         .map(f => f.replace('.json', ''));
 
@@ -52,7 +74,7 @@ export function cargarTexto(codigo, idioma)
 
     const key = codigo.toLowerCase();
 
-    return fetch(`/src/lenguages/${idioma}.json`)
+    return fetch(`/src/languages/${idioma}.json`)
         .then(response => 
         {
             if (!response.ok) throw new Error("Network response was not ok");

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { loadText } from '../Traductor.js';
+import { eventManager } from "../EventManager.js";
 
 function T({ k, children })
 {

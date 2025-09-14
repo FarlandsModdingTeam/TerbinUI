@@ -1,6 +1,6 @@
 class EventManager
 {
-    constructor() 
+    constructor()
     {
         this.listeners = {};
     }
