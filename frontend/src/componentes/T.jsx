@@ -12,19 +12,30 @@ function T({ k, children })
         return children || 'Error: key requerida';
     }
 
-    useEffect(() =>
+    function setText()
     {
-        loadText(k)
-        .then(textoTraducido =>
+        useEffect(() =>
         {
-            setTexto(textoTraducido);
-        })
-        .catch(error =>
-        {
-            console.error(`Error loading text for ${k}:`, error);
-            setTexto(children || k);
-        });
-    }, [k, children]);
+            loadText(k)
+            .then(textoTraducido =>
+            {
+                setTexto(textoTraducido);
+            })
+            .catch(error =>
+            {
+                console.error(`Error loading text for ${k}:`, error);
+                setTexto(children || k);
+            });
+        }, [k, children]);
+    }
+
+    function onLanguageChanged()
+    {
+        setText();
+    }
+    eventManager.on('languageChanged', onLanguageChanged);
+
+    setText();
 
     return texto;
 }
