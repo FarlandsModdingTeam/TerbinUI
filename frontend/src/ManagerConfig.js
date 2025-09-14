@@ -44,7 +44,7 @@ function crearConfigPorDefecto()
         rutaFarlands: "",
         rutaInstancias: "",
         idioma: "Español",
-        tema: "dark"
+        apiKey: "-1"
     };
     
     try
@@ -72,7 +72,7 @@ function rutaFarlands(eNovaRuta)
     {
         const config = leerConfig();
         if (config) return config.rutaFarlands;
-        else return "Error";
+        else return -1;
     }
     else
     {
@@ -99,7 +99,7 @@ function rutaInstancias(eNovaRuta)
     {
         const config = leerConfig();
         if (config) return config.rutaInstancias;
-        else return "Error";
+        else return -1;
     }
     else
     {
@@ -114,6 +114,32 @@ function rutaInstancias(eNovaRuta)
     }
 }
 
+function idioma(eNuevoIdioma)
+{
+    if (!existeConfig())
+    {
+        console.error("No existe configuración");
+        return;
+    }
+
+    if (eNuevoIdioma === null || eNuevoIdioma === false)
+    {
+        const config = leerConfig();
+        if (config) return config.idioma;
+        else return -1;
+    }
+    else
+    {
+        const config = leerConfig();
+        if (config)
+        {
+            config.idioma = eNuevoIdioma;
+            if (!guardarConfig(config))
+                console.error("Error al guardar el nuevo idioma");
+        }
+        else console.error("No se pudo leer la configuración para actualizar el idioma");
+    }
+}
 
 function handleArchivo()
 {
@@ -147,5 +173,18 @@ export function RutaInstancias(eNovaRuta)
     else
     {
         rutaInstancias(eNovaRuta);
+    }
+}
+
+export function Idioma(eNuevoIdioma)
+{
+    handleArchivo();
+    if (eNuevoIdioma === null || eNuevoIdioma === false)
+    {
+        return idioma(null);
+    }
+    else
+    {
+        idioma(eNuevoIdioma);
     }
 }
