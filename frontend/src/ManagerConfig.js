@@ -2,7 +2,7 @@ import fs from 'fs';
 
 const lugarConfig = "./config.json";
 
-function leerConfig()
+async function leerConfig()
 {
     return fetch(lugarConfig)
         .then(response =>
@@ -17,11 +17,11 @@ function leerConfig()
             return null;
         });
 }
-function guardarConfig(eConfig)
+async function guardarConfig(eConfig)
 {
     try
     {
-        fs.writeFileSync(lugarConfig, JSON.stringify(eConfig, null, 4));
+        await fs.promises.writeFile(lugarConfig, JSON.stringify(eConfig, null, 4));
         console.log('Configuración guardada exitosamente');
         return true;
     } 
@@ -32,12 +32,12 @@ function guardarConfig(eConfig)
     }
 }
 
-function existeConfig()
+async function existeConfig()
 {
     return fs.existsSync(lugarConfig);
 }
 
-function crearConfigPorDefecto()
+async function crearConfigPorDefecto()
 {
     const configDefecto = {
         rutaFarlands: "",
@@ -48,7 +48,7 @@ function crearConfigPorDefecto()
     
     try
     {
-        fs.writeFileSync(lugarConfig, JSON.stringify(configDefecto, null, 4));
+        await fs.promises.writeFile(lugarConfig, JSON.stringify(configDefecto, null, 4));
         console.log('Archivo config.json creado exitosamente');
         return configDefecto;
     }
@@ -59,9 +59,9 @@ function crearConfigPorDefecto()
     }
 }
 
-function rutaFarlands(eNovaRuta)
+async function rutaFarlands(eNovaRuta)
 {
-    if (!existeConfig())
+    if (!await existeConfig())
     {
         console.error("No existe configuración");
         return;
@@ -86,9 +86,9 @@ function rutaFarlands(eNovaRuta)
     }
 }
 
-function rutaInstancias(eNovaRuta)
+async function rutaInstancias(eNovaRuta)
 {
-    if (!existeConfig())
+    if (!await existeConfig())
     {
         console.error("No existe configuración");
         return;
@@ -96,26 +96,26 @@ function rutaInstancias(eNovaRuta)
 
     if (eNovaRuta === null || eNovaRuta === false)
     {
-        const config = leerConfig();
+        const config = await leerConfig();
         if (config) return config.rutaInstancias;
         else return -1;
     }
     else
     {
-        const config = leerConfig();
+        const config = await leerConfig();
         if (config)
         {
             config.rutaInstancias = eNovaRuta;
-            if (!guardarConfig(config))
+            if (!await guardarConfig(config))
                 console.error("Error al guardar la nueva ruta de Instancias");
         }
         else console.error("No se pudo leer la configuración para actualizar la ruta de Instancias");
     }
 }
 
-function idioma(eNuevoIdioma)
+async function idioma(eNuevoIdioma)
 {
-    if (!existeConfig())
+    if (!await existeConfig())
     {
         console.error("No existe configuración");
         return;
@@ -123,67 +123,67 @@ function idioma(eNuevoIdioma)
 
     if (eNuevoIdioma === null || eNuevoIdioma === false)
     {
-        const config = leerConfig();
+        const config = await leerConfig();
         if (config) return config.idioma;
         else return -1;
     }
     else
     {
-        const config = leerConfig();
+        const config = await leerConfig();
         if (config)
         {
             config.idioma = eNuevoIdioma;
-            if (!guardarConfig(config))
+            if (!await guardarConfig(config))
                 console.error("Error al guardar el nuevo idioma");
         }
         else console.error("No se pudo leer la configuración para actualizar el idioma");
     }
 }
 
-function handleArchivo()
+async function handleArchivo()
 {
-    if (!existeConfig())
+    if (!await existeConfig())
     {
-        crearConfigPorDefecto();
+        await crearConfigPorDefecto();
     }
 }
 
 // ***************** GSI ***************** //
-export function RutaFarlands(eNovaRuta)
+export async function RutaFarlands(eNovaRuta)
 {
-    handleArchivo();
+    await handleArchivo();
     if (eNovaRuta === null || eNovaRuta === false)
     {
-        return rutaFarlands(null);
+        return await rutaFarlands(null);
     }
     else
     {
-        rutaFarlands(eNovaRuta);
+        await rutaFarlands(eNovaRuta);
     }
 }
 
-export function RutaInstancias(eNovaRuta)
+export async function RutaInstancias(eNovaRuta)
 {
-    handleArchivo();
+    await handleArchivo();
     if (eNovaRuta === null || eNovaRuta === false)
     {
-        return rutaInstancias(null);
+        return await rutaInstancias(null);
     }
     else
     {
-        rutaInstancias(eNovaRuta);
+        await rutaInstancias(eNovaRuta);
     }
 }
 
-export function Idioma(eNuevoIdioma)
+export async function Idioma(eNuevoIdioma)
 {
-    handleArchivo();
+    await handleArchivo();
     if (eNuevoIdioma === null || eNuevoIdioma === false)
     {
-        return idioma(null);
+        return await idioma(null);
     }
     else
     {
-        idioma(eNuevoIdioma);
+        await idioma(eNuevoIdioma);
     }
 }
