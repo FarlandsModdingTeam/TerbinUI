@@ -1,0 +1,30 @@
+{
+  "name": "terbinui-package",
+  "version": "0.0.0",
+  "description": "si",
+  "main": "main.js",
+  "scripts":
+  {
+    "start": "electron ./src/main.ts",
+    "test": "prueba"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarlandsModdingTeam/TerbinUI.git"
+  },
+  "keywords": [
+    "spanish"
+  ],
+  "author": "Sui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FarlandsModdingTeam/TerbinUI/issues"
+  },
+  "homepage": "https://github.com/FarlandsModdingTeam/TerbinUI#readme",
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "electron": "^38.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
