@@ -61,7 +61,7 @@ app.MapFallbackToPage("\\obj\\Host\\splashscreen");
 // 🚀 Aquí está la clave: integración con Electron
 if (HybridSupport.IsElectronActive)
 {
-    Task.Run(async () =>
+    await Task.Run(async () =>
     {
         var window = await Electron.WindowManager.CreateWindowAsync();
         window.OnClosed += () => Environment.Exit(0);
