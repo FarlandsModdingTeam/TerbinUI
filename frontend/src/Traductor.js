@@ -3,32 +3,32 @@ import * as config from "./ManagerConfig.js";
 import { eventManager } from "./EventManager.js";
  
 
-var idiomaCargado = null;
+var _idiomaCargado_i = null;
 
 function setIdioma(eNovoIdioma)
 {
-    idiomaCargado = eNovoIdioma;
+    _idiomaCargado_i = eNovoIdioma;
     config.Idioma(eNovoIdioma);
     eventManager.emit('languageChanged', eNovoIdioma);
 }
 
 function handleLanguage()
 {
-    if (idiomaCargado === null)
+    if (_idiomaCargado_i === null)
     {
         const lang = config.Idioma(null);
 
-        if (lang !== -1) idiomaCargado = lang;
-        else idiomaCargado = "English";
+        if (lang !== -1) _idiomaCargado_i = lang;
+        else _idiomaCargado_i = "English";
 
-        setIdioma(idiomaCargado);
+        setIdioma(_idiomaCargado_i);
     }
     else
     {
         const lang = config.Idioma(null);
-        if (lang !== idiomaCargado)
+        if (lang !== _idiomaCargado_i)
         {
-            config.Idioma(idiomaCargado);
+            config.Idioma(_idiomaCargado_i);
         }
     }
 }
@@ -36,14 +36,14 @@ function handleLanguage()
 export function ChangeLanguage(eLanguage)
 {
     handleLanguage();
-    if (eLanguage === idiomaCargado) return;
+    if (eLanguage === _idiomaCargado_i) return;
     setIdioma(eLanguage);
 }
 
 export function GetCurrentLanguage()
 {
     handleLanguage();
-    return idiomaCargado;
+    return _idiomaCargado_i;
 }
 
 export function getLanguages()
